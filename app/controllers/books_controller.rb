@@ -4,18 +4,25 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book =Book.new
+    @book = Book.new
   end
 
-  def create
-    @book = Book.new(book_params)
-    @book.save
+def create
+  @book = Book.new(book_params)
+  if @book.save
     redirect_to @book, notice: "書籍を登録しました。"
+  else
+    render :new
   end
+end
 
-  private
+def show
+  @book = Book.find(params[:id]) 
+end
+
+private
 
   def book_params
-    params_require(:book).permit(:title, :price, :publish_date, :description)
+    params.require(:book).permit(:title, :price, :publish_date, :description)
   end
 end
