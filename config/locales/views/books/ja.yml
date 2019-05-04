@@ -18,3 +18,5 @@ ja:
       chancel: キャンセル
       new_image: 画像
       image: 画像
+      index:
+      price_yen: "¥%{price}"
